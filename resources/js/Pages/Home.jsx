@@ -1,12 +1,13 @@
-import React from 'react'
-import Layout from '../Layouts/Layout'
+import { Link } from "@inertiajs/react"
+
 
 const Home = ({ name }) => {
   return (
-    <div className='flex justify-center text-4xl font-bold'>Hello {name}</div>
+    <div className='flex flex-col items-center justify-center text-4xl font-bold'>
+      <span>Hello {name}</span>
+      <Link preserveScroll className="mt-[1000px]" href='/'>{new Date().toLocaleTimeString()}</Link>
+    </div>
   )
 }
-
-Home.layout = page => <Layout children={page} />
 
 export default Home
