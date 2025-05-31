@@ -1,5 +1,4 @@
 import { Link } from '@inertiajs/react'
-import React from 'react'
 
 const Layout = ({children}) => {
     return (
@@ -7,7 +6,7 @@ const Layout = ({children}) => {
             <header>
                 <nav className='p-2 w-full flex justify-center gap-5 bg-slate-300'>
                     <Link href='/'>Home</Link>
-                    <Link href='/'>Create</Link>
+                    <Link href='/posts/create'>Create</Link>
                     <Link href='/about'>About</Link>
                 </nav>
             </header>
@@ -16,8 +15,8 @@ const Layout = ({children}) => {
                 {children}
             </main>
 
-            <footer>
-                footer
+            <footer className='flex justify-center'>
+                The end
             </footer>
         </div>
     )
