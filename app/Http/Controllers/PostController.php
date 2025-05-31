@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         //$posts = Post::all();
-        $posts = Post::latest()->get(); //to reverse the list order
+        //$posts = Post::latest()->get(); //to reverse the list order
+        $posts = Post::latest()->paginate(5); //to paginate the list
         return Inertia::render('Home', ['name'=>'Dawg', 'posts'=>$posts]);
     }
 
