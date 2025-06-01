@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         //$posts = Post::all();
         //$posts = Post::latest()->get(); //to reverse the list order
-        $posts = Post::latest()->paginate(5); //to paginate the list
+        $posts = Post::latest()->paginate(8); //to paginate the list
         return Inertia::render('Home', ['name' => 'Dawg', 'posts' => $posts]);
     }
 
@@ -34,7 +34,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        sleep(2);
+        sleep(2); //waits 2 seconds before running the next line of code
+
         $fields = $request->validate([
             'body' => ['required']
         ]);

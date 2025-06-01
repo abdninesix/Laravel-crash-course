@@ -2,13 +2,15 @@ import { Link } from "@inertiajs/react"
 
 const Home = ({ name, posts }) => {
   return (
-    <div className='flex flex-col items-center justify-center text-4xl'>
-      <span>Hello {name}</span>
-      <div className="flex flex-col gap-5">
+    <div className='flex flex-col items-center justify-center'>
+
+      <span className="text-2xl">Hello {name}</span>
+
+      <div className="w-full flex flex-col gap-4">
         {posts.data.map(post => ( //data is coming from pagination in controller
-          <div key={post.id} className="p-4 border-b">
-            <span className="text-lg text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>
-            <p>{post.body}</p>
+          <div key={post.id} className="p-2 border-b">
+            <span className="text-base text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>
+            <p className="text-2xl">{post.body}</p>
           </div>
         ))}
       </div>
@@ -27,6 +29,7 @@ const Home = ({ name, posts }) => {
       </div>
 
       <Link preserveScroll href='/'>{new Date().toLocaleTimeString()}</Link>
+
     </div>
   )
 }
