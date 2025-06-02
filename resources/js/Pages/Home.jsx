@@ -1,16 +1,28 @@
-import { Link } from "@inertiajs/react"
+import { Head, Link, usePage } from "@inertiajs/react"
+import { useState } from "react"
 
 const Home = ({ name, posts }) => {
+
+  const { flash } = usePage().props
+
+  const [toast, setToast] = useState(flash.message)
+  setTimeout(() => { setToast(null) }, 3000)
+
   return (
     <div className='flex flex-col items-center justify-center'>
+      <Head>
+        <title>Home</title>
+        <meta name="laravel project" content="Home page that displays the posts" />
+      </Head>
 
       <span className="text-2xl">Hello {name}</span>
+      {toast && <span className="text-red-500">{toast}</span>}
 
       <div className="w-full flex flex-col gap-4">
         {posts.data.map(post => ( //data is coming from pagination in controller
           <div key={post.id} className="p-2 border-b">
             <span className="text-base text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>
-            <p className="text-2xl">{post.body}</p>
+            <Link href={`/posts/${post.id}`}><p className="text-2xl">{post.body}</p></Link>
           </div>
         ))}
       </div>

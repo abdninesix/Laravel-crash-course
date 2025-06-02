@@ -1,7 +1,9 @@
-import { useForm } from '@inertiajs/react'
+import { Head, useForm, usePage } from '@inertiajs/react'
 import React from 'react'
 
 const Create = () => {
+
+    const { component } = usePage();
 
     const { data, setData, post, processing, errors } = useForm({
         body: '',
@@ -14,6 +16,8 @@ const Create = () => {
 
     return (
         <div className='space-y-6'>
+            <Head title={component}/>
+
             <h1 className='text-4xl'>Create a post</h1>
 
             <div>

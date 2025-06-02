@@ -8,7 +8,6 @@
     @vite('resources/js/app.jsx')
     
     @inertiaHead
-    <title>CrashCourse</title>
 </head>
 
 <body>
