@@ -16,12 +16,14 @@ const Home = ({ name, posts }) => {
       </Head>
 
       <span className="text-2xl">Hello {name}</span>
-      {toast && <span className="text-red-500">{toast}</span>}
+      {toast && <span className="text-green-500">{toast}</span>}
 
       <div className="w-full flex flex-col gap-4">
         {posts.data.map(post => ( //data is coming from pagination in controller
           <div key={post.id} className="p-2 border-b">
-            <span className="text-base text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>
+            {post.created_at !== post.updated_at ?
+              <span className="text-base text-gray-600">Edited: {new Date(post.updated_at).toLocaleTimeString()}</span> :
+              <span className="text-base text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>}
             <Link href={`/posts/${post.id}`}><p className="text-2xl">{post.body}</p></Link>
           </div>
         ))}

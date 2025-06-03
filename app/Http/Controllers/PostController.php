@@ -50,7 +50,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return Inertia::render('Post',['post' => $post]);
+        return Inertia::render('Post', ['post' => $post]);
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return Inertia::render('Edit', ['post' => $post]);
     }
 
     /**
@@ -66,7 +66,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        sleep(2); //waits 2 seconds before running the next line of code
+
+        $fields = $request->validate([
+            'body' => ['required']
+        ]);
+
+        $post->update($fields); //updates recieved data in database
+
+        //dd($request); //die and dump request
+
+        return redirect('/')->with(
+            'message',
+            'The post was updated'   //the first one is key from handleInertiaRequests and second one is custom message
+        );
     }
 
     /**
@@ -76,7 +89,8 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect('/')->with(
-            'message', 'The post was deleted'   //the first one is key from handleInertiaRequests and second one is custom message
+            'message',
+            'The post was deleted'   //the first one is key from handleInertiaRequests and second one is custom message
         );
     }
 }

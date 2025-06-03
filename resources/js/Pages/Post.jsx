@@ -1,4 +1,4 @@
-import { Head, useForm } from "@inertiajs/react"
+import { Head, Link, useForm } from "@inertiajs/react"
 
 
 const Post = ({ post }) => {
@@ -23,6 +23,7 @@ const Post = ({ post }) => {
                 <span className="text-base text-gray-600">Posted: {new Date(post.created_at).toLocaleTimeString()}</span>
                 <p className="text-2xl">{post.body}</p>
                 <form onSubmit={submit}><button className="text-red-500 cursor-pointer">Delete</button></form>
+                <Link href={`/posts/${post.id}/edit`} className="text-green-500 cursor-pointer">Edit</Link>
             </div>
         </div>
     )
